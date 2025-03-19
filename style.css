@@ -1,111 +1,113 @@
- * {
-     margin: 0;
-     padding: 0;
- }
+* {
+    margin: 0;
+    padding: 0;
+}
 
 
- table {
-     border-collapse: collapse;
-     margin-left: 10%;
- }
+table {
+    border-collapse: collapse;
+    margin-left: 10%;
+}
 
- th,
- td {
-     border: 1px solid #ddd;
-     padding: 10px;
- }
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
 
- #product-form {
-     width: 50%;
- }
+#product-form {
+    width: 50%;
+}
 
- #product-table {
-     width: 50%;
- }
+#product-table {
+    width: 50%;
+}
 
- .main-content {
-     padding: 10px;
-     display: flex;
-     user-select: none;
- }
+.main-content {
+    padding: 10px;
+    display: flex;
+    user-select: none;
+}
 
- .delete-btn {
-     background: white;
-     font-size: 15px;
-     border: none;
-     cursor: pointer;
- }
+.delete-btn {
+    background: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
 
- #head-1 {
-     font-size: 30px;
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+#head-1 {
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
- }
+}
 
- header {
-     border-bottom: 1px solid black;
- }
+header {
+    border-bottom: 1px solid black;
+}
 
- #product-form input {
-     width: 250px;
-     height: 30px;
-     border-radius: 5px;
-     border: 1px solid rgb(111, 111, 111);
- }
+#product-form input {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(111, 111, 111);
+}
 
- #customer-form input {
-     width: 250px;
-     height: 30px;
-     border-radius: 5px;
-     border: 1px solid rgb(111, 111, 111);
- }
+#customer-form input {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(111, 111, 111);
+}
 
- #product-form button {
-     width: 100px;
-     height: 35px;
-     border-radius: 5px;
-     border: 1px solid rgb(39, 39, 39);
- }
+#product-form button {
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(39, 39, 39);
+}
 
- table th {
-     font-weight: 100;
-     font-size: 20px;
- }
+table th {
+    font-weight: 100;
+    font-size: 20px;
+}
 
 
- #product-form {
-     margin-left: 15%;
+#product-form {
+    margin-left: 15%;
 
- }
+}
 
- #print-btn {
-     margin-left: 60%;
-     position: relative;
-     font-family: 'Times New Roman', Times, serif;
-     font-weight: lighter;
-     font-size: 17px;
-     background: rgba(255, 0, 0, 0.402);
-     cursor: pointer;
- }
+#print-btn {
+    margin-left: 60%;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    font-size: 17px;
+    background: rgba(255, 0, 0, 0.402);
+    cursor: pointer;
+}
 
- #add-btn {
-     margin-right: 50%;
-     position: absolute;
-     cursor: pointer;
-     font-family: 'Times New Roman', Times, serif;
-     font-size: 17px;
-     font-weight: lighter;
-     background: rgba(2, 255, 2, 0.196);
+#add-btn {
+    margin-right: 50%;
+    position: absolute;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    font-weight: lighter;
+    background: rgba(2, 255, 2, 0.196);
 
- }
+}
+#head-3{
+    margin-top:5px;
+    }
+.details {
+    display: flex;
+    background: white;
+    width: 600px;
+    border-radius: 5px;
+}
 
- .details {
-     display: flex;
-     background: white;
-     width: 600px;
-     border-radius: 5px;
- }
-
- #cart-table{
-    width: 700px;
- }
+#cart-table{
+   width: 700px;
+}
