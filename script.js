@@ -73,9 +73,13 @@ printBtn.addEventListener('click', () => {
     table {
         border-collapse: collapse;
         margin-top: 1%;
-        width: 600px;
+        width: 900px;
     }
-
+table th{
+        background: #8B4513;
+        font-size:20px;
+        font-weight:100;
+}
     th,
     td {
         border: 1px solid #ddd;
@@ -111,6 +115,54 @@ printBtn.addEventListener('click', () => {
         border-left:none;
         
         }
+          .invoice-header {
+        background: #8B4513;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 15px;
+        margin-top: 30px;
+        border-top: 1px solid black;
+
+    }
+            .invoice-details {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+            font-size:20px;
+        font-weight:100;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+            .invoice-amount {
+        background: #8B4513;
+        color: white;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+    }
+           .summary-table {
+            width: 900px;
+
+        margin-top: 10px;
+    }
+
+    .summary-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+            .total-amount {
+        background: #8B4513;
+        color: white;
+        font-weight: bold;
+    }
+    .billing-address{
+       font-size:15px;
+        font-weight:100;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }    
+        #head-3{
+        margin-top:5px;
+        }
 </style>
 
 
@@ -118,25 +170,32 @@ printBtn.addEventListener('click', () => {
         <center>
             <p id="head-1">A-1 Glass Enterprises</p>
             <p id="head-2">vill. Shahpur Khana, Near Punjab National Bank Dist. Tiraha, Bijnor-246701</p>
-                 <p> Cont.No. 8490843958/7819956006  &emsp;&emsp;      GSTIN:09ABZPF7974Q1Z7</p>
+                 <p  id="head-3"> Cont.No. 8490843958/7819956006  &emsp;&emsp;      GSTIN:09ABZPF7974Q1Z7</p>
         </center>
 
     </header>
+     <div class="invoice-header">
+            <h2>Invoice</h2>
+        </div>
+        
     <center>
         <div class="main">
-
-            <p>Customer Name: ${customerName}</p>
-            
-            <p>Customer Phone: ${customerPhone}</p><br>
-            <p>Customer Address: ${customerAddress}</p>
+<div class="invoice-details">
+            <strong>Bill To:&emsp;${customerName}</strong>
+            <strong>Contact No.:&emsp;${customerPhone}</strong>
+        </div>
+              <div class="billing-address">
+            <strong id="billing-address-1">Billing Address:&emsp; ${customerAddress}</strong><br><br>
+        </div>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Rate</th>
-                        <th>Quantity</th>
-                        <th>Total Amount</th>
+                       <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Price/Unit</th>
+                    <th>GST</th>
+                    <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -151,8 +210,9 @@ printBtn.addEventListener('click', () => {
         bill += `
             <tr>
                 <td>${product.itemName}</td>
-                <td>${product.rate}</td>
                 <td>${product.quantity}</td>
+                <td>${product.rate}</td>
+                <td></td>
                 <td>${product.totalAmount}</td>
             </tr>
                    
@@ -164,19 +224,36 @@ printBtn.addEventListener('click', () => {
 
     bill += `
             </tbody>
-             <tr>
-    <td id="money"></td>
-    <td id="money"></td>
-    <td id="money">GST</td>
-    <td id="money">${totalBillAmount}</td>
-    </tr>
+             
     <tr>
     <td></td>
+    <td ></td>
     <td ></td>
     <td  id="money">Total Bill Amount</td>
     <td  id="money">${totalBillAmount}</td>
     </tr>
             </table>
+            <div class="invoice-amount">
+            <strong>INVOICE AMOUNT IN WORDS</strong>
+        </div>
+         <table class="summary-table">
+            <tr>
+                <td>Sub Total: </td>
+                <td>${numberToWords(totalBillAmount).toUpperCase()}</td>
+            </tr>
+            <tr>
+                <td>SGST:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>CGST:</td>
+                <td></td>
+            </tr>
+            <tr class="total-amount">
+                <td>Total Amount:</td>
+                <td>${totalBillAmount}</td>
+            </tr>
+        </table>
       
     `;
 
@@ -184,3 +261,41 @@ printBtn.addEventListener('click', () => {
     printWindow.document.write(bill);
     printWindow.print();
 });
+
+function numberToWords(totalBillAmount) {
+    const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    const thousands = ['', 'thousand', 'million', 'billion'];
+
+    if (totalBillAmount === 0) {
+        return 'zero';
+    }
+
+    let words = '';
+    let i = 0;
+
+    while (totalBillAmount > 0) {
+        if (totalBillAmount % 1000 !== 0) {
+            words = helper(totalBillAmount % 1000) + ' ' + thousands[i] + ' ' + words;
+        }
+        totalBillAmount = Math.floor(totalBillAmount / 1000);
+        i++;
+    }
+
+    return words.trim();
+
+    function helper(totalBillAmount) {
+        if (totalBillAmount === 0) {
+            return '';
+        } else if (totalBillAmount < 10) {
+            return ones[totalBillAmount];
+        } else if (totalBillAmount < 20) {
+            return teens[totalBillAmount - 10];
+        } else if (totalBillAmount < 100) {
+            return tens[Math.floor(totalBillAmount / 10)] + (totalBillAmount % 10 !== 0 ? ' ' + ones[totalBillAmount % 10] : '');
+        } else {
+            return ones[Math.floor(totalBillAmount / 100)] + ' hundred' + (totalBillAmount % 100 !== 0 ? ' ' + helper(totalBillAmount % 100) : '');
+        }
+    }
+}
