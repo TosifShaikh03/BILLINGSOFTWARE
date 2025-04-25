@@ -167,11 +167,7 @@ table th{
 
 
     <header>
-        <center>
-            <p id="head-1">A-1 Glass Enterprises</p>
-            <p id="head-2">vill. Shahpur Khana, Near Punjab National Bank Dist. Tiraha, Bijnor-246701</p>
-                 <p  id="head-3"> Cont.No. 8490843958/7819956006  &emsp;&emsp;      GSTIN:09ABZPF7974Q1Z7</p>
-        </center>
+        
 
     </header>
      <div class="invoice-header">
